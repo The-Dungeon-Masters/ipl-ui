@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { UserLoginComponent } from './user-login/user-login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 /**
@@ -10,6 +11,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 @NgModule({
   imports: [RouterModule.forChild([
     { path: 'login', component: UserLoginComponent },
+    { path: 'titukisweety', component: RegisterComponent },
   ])],
   exports: [RouterModule]
 })

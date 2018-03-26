@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { CoreRoutingModule } from './core-routing.module';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { CoreRoutingModule } from './core-routing.module';
     FooterComponent,
     HeaderComponent,
   ],
-  declarations: [HeaderComponent, FooterComponent, UserLoginComponent]
+  declarations: [HeaderComponent, FooterComponent, UserLoginComponent, RegisterComponent]
 })
 export class CoreModule { }
