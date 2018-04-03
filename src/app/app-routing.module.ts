@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'play/todays-matches', pathMatch: 'full'},
   { path: 'play', loadChildren: 'app/play/play.module#PlayModule' }
 ];
 

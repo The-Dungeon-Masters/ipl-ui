@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { User } from './model/user';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Errors } from './errors';
+import { HttpHelper } from './http-helper';
 
 /**
  * This service provides functionality related to user authentication and permissions checking
@@ -45,7 +48,7 @@ export class SecurityService {
     return new SecureUser(refUser, securityContext);
   }
 
-  constructor() {
+  constructor(private httpService: HttpClient) {
     console.log('SecurityService::ctor');
   }
 
@@ -66,7 +69,30 @@ export class SecurityService {
    * @param  - the user template to authenticate that specifies (username or email) and password of the user to authenticate
    */
   public authenticate(user: User): Observable<User> {
-    return null;
+    const errors = new Errors();
+    const url: string = HttpHelper.BASE_URL + '/login';
+    const credentials: string = JSON.stringify({ username: user.username, password: user.password });
+    const observable =  Observable.create(emitter => {
+    this.httpService.post(url, credentials)
+          .subscribe((res) => {
+            console.log(res);
+              // const token = res.data;
+              // if (token) {
+              //     const cuser = this.doAuth(token);
+              //     emitter.next(cuser);
+              //     emitter.complete();
+              // } else {
+              //     errors.addNew('invalid_password', 'Invalid password');
+              //     emitter.error(errors);
+              // }
+          },
+           (err: HttpErrorResponse) => {
+             console.log(err);
+              //  const eo: ErrorObservable = this.handleError(err);
+              // emitter.error(eo.error);
+           });
+    });
+    return observable;
   }
 
   /**

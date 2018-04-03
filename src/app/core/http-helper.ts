@@ -11,7 +11,7 @@ import { Errors } from './errors';
 export class HttpHelper {
 
 public static readonly SecurityContextKey = 'security.context';
-public static readonly BASE_URL = '/scc/v1';
+public static readonly BASE_URL = '/ipl';
 
 
   public static getCurrentUserId(): number {
@@ -43,7 +43,7 @@ public static readonly BASE_URL = '/scc/v1';
     return sessionStorage.getItem(this.SecurityContextKey);
   }
 
-  public static getRequestOptionArgs(options?: RequestOptionsArgs) : RequestOptionsArgs {
+  public static getRequestOptionArgs(options?: RequestOptionsArgs): RequestOptionsArgs {
         if (options == null) {
             options = new RequestOptions();
         }
@@ -53,7 +53,7 @@ public static readonly BASE_URL = '/scc/v1';
         options.headers.append('Content-Type', 'application/json');
         options.headers.append('Cache-Control', 'no-cache, no-store, must-revalidate');
         options.headers.append('Pragma', 'no-cache');
-        options.headers.append('Authorization', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiZXhwIjoxNTIyNzU5NjIwfQ.Ji6wB-1uEMUzGMduuoFV4iHk14TZmcIrG3FBJ1-VIWjDObHnPwz3GINBrhc0SAeWj331mgIOPqHCkuPbFITCiQ');
+        options.headers.append('Authorization', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiZXhwIjoxNTIyNzc5MjI1fQ.llp-HF687yOfjZ9hja8WZulX5_vM3Ygtzz6MuUqfoBmmc_S9JYKWVT-UFaGFe06gV3LiJ5VoZmz012_GuugjWg');
         return options;
     }
 
