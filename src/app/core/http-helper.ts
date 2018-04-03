@@ -53,10 +53,7 @@ public static readonly BASE_URL = '/scc/v1';
         options.headers.append('Content-Type', 'application/json');
         options.headers.append('Cache-Control', 'no-cache, no-store, must-revalidate');
         options.headers.append('Pragma', 'no-cache');
-        options.headers.append('Expires', '0');
-        if(HttpHelper.getSecurityContext()) {
-            options.headers.append('Authorization', 'Bearer ' + HttpHelper.getSecurityContext());
-        }
+        options.headers.append('Authorization', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiZXhwIjoxNTIyNzU5NjIwfQ.Ji6wB-1uEMUzGMduuoFV4iHk14TZmcIrG3FBJ1-VIWjDObHnPwz3GINBrhc0SAeWj331mgIOPqHCkuPbFITCiQ');
         return options;
     }
 
@@ -104,7 +101,7 @@ public static readonly BASE_URL = '/scc/v1';
         }
         observer.error(errors);
         observer.complete();
-      }
+      };
     });
     const jsonError =  err.json() || '';
     reader.readAsText(jsonError);

@@ -7,7 +7,7 @@ import { User } from './model/user';
  * This service provides functionality related to user authentication and permissions checking
  */
 @Injectable()
-export abstract class SecurityService {
+export class SecurityService {
   public static readonly SECURITY_KEY = 'security.context';
 
   protected _currentUser: User = null;
@@ -60,23 +60,21 @@ export abstract class SecurityService {
      return this.currentUser.isAuthenticated;
   }
 
-  /**
-   * Sends an email to the specified email address requestiong a password reset.
-   * @param email - the email address to send the recovery email to.
-   */
-  public abstract sendRecoveryEmail(email: string): Observable<string>;
-
 
   /**
    * Authenticates a user
    * @param  - the user template to authenticate that specifies (username or email) and password of the user to authenticate
    */
-  public abstract authenticate(user: User): Observable<User>;
+  public authenticate(user: User): Observable<User> {
+    return null;
+  }
 
   /**
    * Logs out the current user
    */
-  public abstract logout(): Observable<User>;
+  public logout(): Observable<User> {
+    return null;
+  }
 
   /**
    * Checks whether or not the specified user is the user currently logged into the application

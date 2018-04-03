@@ -3,17 +3,17 @@ import {HttpHelper} from './http-helper';
 import {Router} from '@angular/router';
 import {RequestOptionsArgs, RequestOptions, Request, Response, Http, Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 
 @Injectable()
 export class HttpService {
 
-   public static readonly BASE_URL = HttpHelper.BASE_URL;
+    public static readonly BASE_URL = '/ipl';
 
 
 
-   constructor(private http: Http, private router: Router, private securityService : SecurityService) { 
+   constructor(private http: Http, private router: Router, private securityService: SecurityService) {
     console.log('HttpService::ctor');
    }
 
