@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { PlayService } from '../../core/services/play.service';
 @Component({
   selector: 'app-match-overview',
   templateUrl: './match-overview.component.html',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchOverviewComponent implements OnInit {
 
-  constructor() { }
+  public match = {};
+
+  constructor(public playService: PlayService) { }
 
   ngOnInit() {
+    this.getMatchOverview();
+  }
+
+  public getMatchOverview() {
+    this.playService.getMatchOverview(1).subscribe(match => {
+      this.match = match;
+    });
   }
 
 }

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import {RequestOptionsArgs, RequestOptions, Request, Response, Http, Headers} from '@angular/http';
+import { RequestOptionsArgs, RequestOptions, Request, Response, Http, Headers } from '@angular/http';
 
 import { User } from './model/user';
 import { Errors } from './errors';
@@ -10,57 +10,27 @@ import { Errors } from './errors';
 
 export class HttpHelper {
 
-public static readonly SecurityContextKey = 'security.context';
-public static readonly BASE_URL = '/ipl';
-
-
-  public static getCurrentUserId(): number {
-    const user = HttpHelper.getCurrentUser();
-    if (user) {
-      return user.id;
-    }
-  }
-
-  public static getCurrentUser(): User {
-    const payload = this.getJwtPayload();
-    if (payload) {
-      console.log('payload : ' + payload.userId + ':' + payload.fullName + ':' + payload.email + ':' + payload.sub);
-      return new User(payload.userId, payload.fullName, payload.email, payload.sub);
-    }
-  }
-
-  public static  getJwtPayload(): any {
-    const jwt = this.getSecurityContext();
-    if (jwt) {
-      const parts = jwt.split('.');
-      const encodedPayload = parts[1];
-      const payload = JSON.parse(atob(encodedPayload));
-      return payload;
-    }
-  }
+  public static readonly SecurityContextKey = 'security.context';
+  public static readonly BASE_URL = '/ipl';
 
   public static getSecurityContext(): any {
     return sessionStorage.getItem(this.SecurityContextKey);
   }
 
   public static getRequestOptionArgs(options?: RequestOptionsArgs): RequestOptionsArgs {
-        if (options == null) {
-            options = new RequestOptions();
-        }
-        if (options.headers == null) {
-            options.headers = new Headers();
-        }
-        options.headers.append('Content-Type', 'application/json');
-        options.headers.append('Cache-Control', 'no-cache, no-store, must-revalidate');
-        options.headers.append('Pragma', 'no-cache');
-        options.headers.append('Authorization', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdXBlcmFkbWluIiwiZXhwIjoxNTIyNzc5MjI1fQ.llp-HF687yOfjZ9hja8WZulX5_vM3Ygtzz6MuUqfoBmmc_S9JYKWVT-UFaGFe06gV3LiJ5VoZmz012_GuugjWg');
-        return options;
+    if (options == null) {
+      options = new RequestOptions();
     }
-
-  public static createErrorFromHttpError(httpError: any): Error  {
-    const errorName = httpError.statusText.replace(/ /g, '_').toLowerCase();
-    const errorMessage = `${httpError.status} ${httpError.statusText} - ${httpError.url}`;
-    return Errors.createError(errorName, errorMessage);
+    if (options.headers == null) {
+      options.headers = new Headers();
+    }
+    options.headers.append('Content-Type', 'application/json');
+    options.headers.append('Cache-Control', 'no-cache, no-store, must-revalidate');
+    options.headers.append('Pragma', 'no-cache');
+    if (HttpHelper.getSecurityContext()) {
+        options.headers.append('Authorization', 'Bearer ' + HttpHelper.getSecurityContext());
+    }
+    return options;
   }
 
   /**
@@ -70,7 +40,7 @@ public static readonly BASE_URL = '/ipl';
   public static createErrorsFromHttpError(httpError: any): Errors {
     const errors = new Errors();
     if (httpError.statusText) {
-      errors.add(HttpHelper.createErrorFromHttpError(httpError));
+      // errors.add(HttpHelper.createErrorFromHttpError(httpError));
     } else if (httpError.errors) {
       httpError.errors.forEach(error => {
         errors.add(Errors.createError(error.name || null, error.message || null, error.stack || null));
@@ -84,49 +54,25 @@ public static readonly BASE_URL = '/ipl';
     return errors;
   }
 
-
- public static handleErrorBlob(err: Response): Observable<Errors> {
-    const reader: FileReader = new FileReader();
+  public static handleError(res: Response | any) {
+    const contentType = res.headers.get('Content-Type');
     const errors = new Errors();
 
-    const obs = Observable.create((observer: any) => {
-      reader.onloadend = (e) => {
-        const error = JSON.parse(reader.result);
-        if (error.ewnErrors)  {
-            for (let i = 0; i < error.ewnErrors.length; i++) {
-                  const name = error.ewnErrors[i].field;
-                  const msg = error.ewnErrors[i].errorMessage;
-                  errors.addNew(name, msg);
-            }
+    if (contentType.toLowerCase() === 'application/json') {
+      const error = res.json() || '';
+      if (error.ewnErrors) {
+        for (let i = 0; i < error.ewnErrors.length; i++) {
+          const name = error.ewnErrors[i].field;
+          const msg = error.ewnErrors[i].errorMessage;
+          errors.addNew(name, msg);
         }
-        observer.error(errors);
-        observer.complete();
-      };
-    });
-    const jsonError =  err.json() || '';
-    reader.readAsText(jsonError);
-    return obs;
-}
-
-public static  handleError(res: Response | any) {
-        const contentType = res.headers.get('Content-Type');
-        const errors = new Errors();
-
-        if (contentType.toLowerCase() === 'application/json') {
-            const error = res.json() || '';
-             if (error.ewnErrors)  {
-                for (let i = 0; i < error.ewnErrors.length; i++) {
-                  const name = error.ewnErrors[i].field;
-                  const msg = error.ewnErrors[i].errorMessage;
-                  errors.addNew(name, msg);
-                }
-            } else {
-                errors.addNew('http_error', res.statusText);
-            }
-        } else {
-            errors.addNew('http_error', res.statusText);
-        }
-        return Observable.throw(errors);
+      } else {
+        errors.addNew('http_error', res.statusText);
+      }
+    } else {
+      errors.addNew('http_error', res.statusText);
     }
+    return Observable.throw(errors);
+  }
 
 }

@@ -5,6 +5,7 @@ import { TodaysMatchesComponent } from './todays-matches/todays-matches.componen
 import { PredictComponent } from './predict/predict.component';
 import { MyPridictionsComponent } from './my-pridictions/my-pridictions.component';
 import { MatchOverviewComponent } from './match-overview/match-overview.component';
+import { AllMatchesComponent } from './all-matches/all-matches.component';
 /**
  * Provides routing configuration for the Play module
  */
@@ -14,7 +15,8 @@ import { MatchOverviewComponent } from './match-overview/match-overview.componen
     { path: 'todays-matches', component: TodaysMatchesComponent },
     { path: 'predict/:id', component: PredictComponent },
     { path: 'my-pridictions', component: MyPridictionsComponent },
-    { path: 'match-overview/:id', component: MatchOverviewComponent }
+    { path: 'match-overview/:id', component: MatchOverviewComponent },
+    { path: 'all-matches', component: AllMatchesComponent  }
   ])],
   exports: [RouterModule]
 })

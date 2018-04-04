@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { PlayService } from '../../core/services/play.service';
 @Component({
   selector: 'app-todays-matches',
   templateUrl: './todays-matches.component.html',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodaysMatchesComponent implements OnInit {
 
-  constructor() { }
+  public todaysMatches= [];
+  constructor(public playService: PlayService) { }
 
   ngOnInit() {
+    this.getTodaysMatches();
+  }
+
+  public getTodaysMatches() {
+    this.playService.todaysMatches().subscribe(matches => {
+      this.todaysMatches = matches;
+    });
   }
 
 }

@@ -14,9 +14,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private getAll() {
-    this.playService.getAllMatches().subscribe(user => {
-      console.log(user);
-    });
+    // this.playService.getAllMatches().subscribe(user => {
+    //   console.log(user);
+    // });
   }
 
 

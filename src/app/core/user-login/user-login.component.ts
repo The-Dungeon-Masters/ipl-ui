@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SecurityService } from '../security.service';
 import { User } from '../model/user';
+import { Errors } from '../errors';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -8,18 +10,20 @@ import { User } from '../model/user';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
+  public errors = new Errors();
+  constructor(public securityService: SecurityService, private router: Router) { }
 
-  constructor(public securityService: SecurityService) { }
-
-  public newUser = new User();
+  public user = new User();
 
   ngOnInit() {
   }
 
   public login(): void {
-    debugger;
-    this.securityService.authenticate(this.newUser).subscribe(user => {
-      console.log(user);
+    this.securityService.authenticate(this.user).subscribe(user => {
+      this.router.navigate(['/play']);
+    },
+    errors =>  {
+      this.errors = errors;
     });
   }
 }

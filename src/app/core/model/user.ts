@@ -36,15 +36,12 @@ export class User {
    * Gets whether or not the user is authenticated
    */
   public get isAuthenticated(): boolean {
-    return this._securityContext !== null;
+    if ( SecurityService.getSecurityToken() ) {
+      return true;
+    }
+    return false;
   }
 
-  /**
-   * Gets the security context of the user (should be a JWT).
-   */
-  public get securityContext(): string {
-    return this._securityContext || '';
-  }
 
 
 }
