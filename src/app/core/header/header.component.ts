@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayService } from '../services/play.service';
-import { SecurityService } from '../security.service';
 import { Router } from '@angular/router';
+
+import { SecurityService } from '../security.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,16 +10,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public playService: PlayService, private router: Router) { }
+  constructor( private router: Router ) { }
 
   ngOnInit() {
-    this.getAll();
-  }
-
-  private getAll() {
-    // this.playService.getAllMatches().subscribe(user => {
-    //   console.log(user);
-    // });
   }
 
   myFunction() {

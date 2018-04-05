@@ -8,6 +8,7 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { PlayService } from './services/play.service';
+import { UsersService } from './services/users.service';
 import { SecurityService } from './security.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 @NgModule({
@@ -24,6 +25,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
   declarations: [HeaderComponent, FooterComponent, UserLoginComponent, RegisterComponent, ChangePasswordComponent],
   providers: [
     PlayService,
+    UsersService,
     SecurityService
   ]
 })

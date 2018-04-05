@@ -10,21 +10,6 @@ export class PlayService {
 
   constructor(private httpService: HttpService) { }
 
-
-  public getAllUsers(): Observable<any> {
-    const _url = HttpService.BASE_URL + `/user/getall`;
-    const observable = this.httpService.get(_url)
-      .map((res: Response) => {
-        return res.json();
-      })
-      .catch((error: Error) => {
-        const errors = HttpHelper.createErrorsFromHttpError(error);
-        return Observable.throw(new Errors().add(error));
-      });
-    return observable;
-  }
-
-
   public getAllMatches(): Observable<any> {
     const _url = HttpService.BASE_URL + `/matches`;
     const observable = this.httpService.get(_url)
@@ -79,6 +64,19 @@ export class PlayService {
 
   public upComingMatches(): Observable<any> {
     const _url = HttpService.BASE_URL + `/matches/upcomingMatches`;
+    const observable = this.httpService.get(_url)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: Error) => {
+        const errors = HttpHelper.createErrorsFromHttpError(error);
+        return Observable.throw(new Errors().add(error));
+      });
+    return observable;
+  }
+
+  public getContests(): Observable<any> {
+    const _url = HttpService.BASE_URL + `/contest/getall`;
     const observable = this.httpService.get(_url)
       .map((res: Response) => {
         return res.json();
