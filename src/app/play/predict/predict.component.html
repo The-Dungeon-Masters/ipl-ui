@@ -1,4 +1,4 @@
-<br><div class="row">
+<div class="row" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
     <div class="col-sm-6">
         <div class="form-group">
             <select class="form-control" placeholder="Select team">
@@ -46,3 +46,10 @@
         </div>
     </div>
 </div>
+
+<ng-template #noAuth>
+    <h2>You are not authorized to this screen</h2>
+    <h4>please login
+        <a href="javascript:void()" routerLink="/login">Login</a>
+    </h4>
+</ng-template>

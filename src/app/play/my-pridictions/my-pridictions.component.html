@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
   <thead>
     <tr>
       <th>Match</th>
@@ -10,25 +10,37 @@
   </thead>
   <tbody>
     <tr>
-      <td><a href="">MI vs CSK</a></td>
+      <td>
+        <a href="">MI vs CSK</a>
+      </td>
       <td>2 April 2018</td>
       <td>MI</td>
       <td>MI</td>
       <td>-10</td>
     </tr>
-      <tr>
-        <td><a href="">MI vs CSK</a></td>
-        <td>2 April 2018</td>
-        <td>MI</td>
-        <td>MI</td>
-        <td>-10</td>
-      </tr>
-      <tr>
-        <td><a href="">MI vs CSK</a></td>
-        <td>2 April 2018</td>
-        <td>MI</td>
-        <td>MI</td>
-        <td>-10</td>
-      </tr>
+    <tr>
+      <td>
+        <a href="">MI vs CSK</a>
+      </td>
+      <td>2 April 2018</td>
+      <td>MI</td>
+      <td>MI</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="">MI vs CSK</a>
+      </td>
+      <td>2 April 2018</td>
+      <td>MI</td>
+      <td>MI</td>
+      <td>-10</td>
+    </tr>
   </tbody>
 </table>
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

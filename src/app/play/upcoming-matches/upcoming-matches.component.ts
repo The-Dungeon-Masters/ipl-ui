@@ -3,15 +3,14 @@ import { PlayService } from '../../core/services/play.service';
 import { AbstractRedirect } from '../../core/abstract-redirect';
 import { SecurityService } from '../../core/security.service';
 import { Router } from '@angular/router';
-
 @Component({
-  selector: 'app-match-overview',
-  templateUrl: './match-overview.component.html',
-  styleUrls: ['./match-overview.component.css']
+  selector: 'app-upcoming-matches',
+  templateUrl: './upcoming-matches.component.html',
+  styleUrls: ['./upcoming-matches.component.css']
 })
-export class MatchOverviewComponent extends AbstractRedirect implements OnInit {
+export class UpcomingMatchesComponent extends AbstractRedirect implements OnInit {
 
-  public match = {};
+  public upComing = [];
 
   constructor(
     public securityService: SecurityService,
@@ -23,13 +22,12 @@ export class MatchOverviewComponent extends AbstractRedirect implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
-    this.getMatchOverview();
+    this.getUpcoming();
   }
 
-  public getMatchOverview() {
-    this.playService.getMatchOverview(1).subscribe(match => {
-      this.match = match;
+  public getUpcoming() {
+    this.playService.upComingMatches().subscribe(matches => {
+      this.upComing = matches;
     });
   }
-
 }

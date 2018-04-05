@@ -1,4 +1,4 @@
-<div class="match-overview">
+<div class="match-overview" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
   <div class="card" style="width: 100%;">
     <div class="card-body">
       <h5 class="card-title">Match Summary (CSK VS MI)</h5>
@@ -7,29 +7,35 @@
     </div>
   </div>
   <table class="table">
-      <thead>
-        <tr>
-          <th>Catergory</th>
-          <th>MI</th>
-          <th>CSK</th>
-          <th>Points/Person</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>10 Points</td>
-          <td>Yogesh, pankaj, akash</td>
-          <td>Rhishi, gade</td>
-          <td>15 Points</td>
-        </tr>
-        <tr>
-          <td>10 Points</td>
-          <td>Yogesh, pankaj, akash</td>
-          <td>Rhishi</td>
-          <td>15 Points</td>
-        </tr>
-      </tbody>
-    </table>
+    <thead>
+      <tr>
+        <th>Catergory</th>
+        <th>MI</th>
+        <th>CSK</th>
+        <th>Points/Person</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>10 Points</td>
+        <td>Yogesh, pankaj, akash</td>
+        <td>Rhishi, gade</td>
+        <td>15 Points</td>
+      </tr>
+      <tr>
+        <td>10 Points</td>
+        <td>Yogesh, pankaj, akash</td>
+        <td>Rhishi</td>
+        <td>15 Points</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

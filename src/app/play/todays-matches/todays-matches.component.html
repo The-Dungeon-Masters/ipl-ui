@@ -1,18 +1,17 @@
-<div class="todays-matches">
+<div class="todays-matches" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
   <div class="card" style="width: 18rem;" *ngFor="let match of todaysMatches">
     <div class="card-body">
-      <h5 class="card-title">CSK VS KKR</h5>
-      <h6 class="card-subtitle mb-2 text-muted">mumbai</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Predict</a>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">RR VS SRH</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Hyderabad</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="javascript:void(0)" routerLink="/play/predict/2" class="btn btn-primary">Predict</a>
+      <h5 class="card-title">{{ match.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ match.startTime | date:'shortTime' }}</h6>
+      <p class="card-text">{{ match.venue }}</p>
+      <a href="javascript:void(0)" routerLink="/play/predict/{{match.id}}" class="btn btn-primary">Predict</a>
     </div>
   </div>
 </div>
+
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

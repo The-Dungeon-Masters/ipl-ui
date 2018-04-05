@@ -9,6 +9,7 @@ import { CoreRoutingModule } from './core-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { PlayService } from './services/play.service';
 import { SecurityService } from './security.service';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,7 @@ import { SecurityService } from './security.service';
     FooterComponent,
     HeaderComponent,
   ],
-  declarations: [HeaderComponent, FooterComponent, UserLoginComponent, RegisterComponent],
+  declarations: [HeaderComponent, FooterComponent, UserLoginComponent, RegisterComponent, ChangePasswordComponent],
   providers: [
     PlayService,
     SecurityService

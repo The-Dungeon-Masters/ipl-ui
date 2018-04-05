@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayService } from '../services/play.service';
+import { SecurityService } from '../security.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,7 +9,7 @@ import { PlayService } from '../services/play.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public playService: PlayService) { }
+  constructor(public playService: PlayService, private router: Router) { }
 
   ngOnInit() {
     this.getAll();
@@ -20,12 +22,17 @@ export class HeaderComponent implements OnInit {
   }
 
   myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
+    const x = document.getElementById('myTopnav');
+    if (x.className === 'topnav') {
+      x.className += 'responsive';
     } else {
-        x.className = "topnav";
+      x.className = 'topnav';
     }
-}
+  }
+
+  private logout() {
+    SecurityService.removeSecurityToken();
+    this.router.navigate(['/login']);
+  }
 
 }

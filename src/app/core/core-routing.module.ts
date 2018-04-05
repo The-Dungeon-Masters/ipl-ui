@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { UserLoginComponent } from './user-login/user-login.component';
 import { RegisterComponent } from './register/register.component';
-
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 /**
  * Provides routing configuration for the Core module
@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
   imports: [RouterModule.forChild([
     { path: 'login', component: UserLoginComponent },
     { path: 'titukisweety', component: RegisterComponent },
+    { path: 'change-password', component: ChangePasswordComponent },
   ])],
   exports: [RouterModule]
 })

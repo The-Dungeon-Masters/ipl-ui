@@ -10,12 +10,17 @@ import { Router} from '@angular/router';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
+
   public errors = new Errors();
+
   constructor(public securityService: SecurityService, private router: Router) { }
 
   public user = new User();
 
   ngOnInit() {
+    if (this.securityService.currentUser.isAuthenticated) {
+      this.router.navigate(['/play']);
+    }
   }
 
   public login(): void {
