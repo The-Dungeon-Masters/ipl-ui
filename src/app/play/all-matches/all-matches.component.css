@@ -1,0 +1,5 @@
+.all-matches-table{
+  text-align: left;
+}
+.all-matches-table tr:nth-child(even) {background: #F7F4F3}
+.all-matches-table tr:nth-child(odd) {background: #FFF}

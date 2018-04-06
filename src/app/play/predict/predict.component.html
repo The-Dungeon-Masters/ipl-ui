@@ -1,55 +1,56 @@
 <div class="row" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
-    <div class="col-sm-6">
-        <div class="form-group">
-            <select class="form-control" placeholder="Select team">
-                <option>CSK</option>
-                <option>MI</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <select class="form-control" placeholder="Select team">
-                <option>CSK</option>
-                <option>MI</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <select class="form-control" placeholder="Select team">
-                <option>CSK</option>
-                <option>MI</option>
-            </select>
-        </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">
+          Niyuj
+        </label>
+      </div>
     </div>
-    <div class="col-sm-6">
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox">
-                <label class="form-check-label">
-                    Niyuj
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox">
-                <label class="form-check-label">
-                    Rs 10
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox">
-                <label class="form-check-label">
-                    Rs 20
-                </label>
-            </div>
-        </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">
+          Rs 10
+        </label>
+      </div>
     </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label">
+          Rs 20
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <select class="form-control" placeholder="Select team">
+        <option>CSK</option>
+        <option>MI</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <select class="form-control" placeholder="Select team">
+        <option>CSK</option>
+        <option>MI</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <select class="form-control" placeholder="Select team">
+        <option>CSK</option>
+        <option>MI</option>
+      </select>
+    </div>
+
+  </div>
 </div>
 
 <ng-template #noAuth>
-    <h2>You are not authorized to this screen</h2>
-    <h4>please login
-        <a href="javascript:void()" routerLink="/login">Login</a>
-    </h4>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
 </ng-template>

@@ -1,0 +1,5 @@
+.my-predictions-table{
+  text-align: left;
+}
+.my-predictions-table tr:nth-child(even) {background: #F7F4F3}
+.my-predictions-table tr:nth-child(odd) {background: #FFF}

@@ -1,0 +1,5 @@
+.upcoming-matches-table{
+  text-align: left;
+}
+.upcoming-matches-table tr:nth-child(even) {background: #F7F4F3}
+.upcoming-matches-table tr:nth-child(odd) {background: #FFF}
