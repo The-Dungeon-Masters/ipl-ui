@@ -1,4 +1,9 @@
 .todays-matches .card {
     display: inline-block;
     margin: 50px;
+    height: 100%;
+}
+
+.todays-matches .card a{
+    font: bold;
 }

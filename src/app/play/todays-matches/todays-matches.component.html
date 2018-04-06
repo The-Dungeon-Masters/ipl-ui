@@ -1,10 +1,9 @@
 <div class="todays-matches" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
-  <div class="card" style="width: 18rem;" *ngFor="let match of todaysMatches">
+  <div class="card" style="" *ngFor="let match of todaysMatches">
     <div class="card-body">
-      <h5 class="card-title">{{ match.name }}</h5>
+      <a href="javascript:void(0)" routerLink="/play/match-overview/{{match.id}}"><h2 class="card-title">{{ match.name }}</h2></a>
       <h6 class="card-subtitle mb-2 text-muted">{{ match.startTime | date:'shortTime' }}</h6>
       <p class="card-text">{{ match.venue }}</p>
-      <a href="javascript:void(0)" routerLink="/play/predict/{{match.id}}" class="btn btn-primary">Predict</a>
     </div>
   </div>
 </div>
