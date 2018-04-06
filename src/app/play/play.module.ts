@@ -6,11 +6,13 @@ import { PredictComponent } from './predict/predict.component';
 import { MyPridictionsComponent } from './my-pridictions/my-pridictions.component';
 import { MatchOverviewComponent } from './match-overview/match-overview.component';
 import { AllMatchesComponent } from './all-matches/all-matches.component';
+import { FormsModule } from '@angular/forms';
 import { UpcomingMatchesComponent } from './upcoming-matches/upcoming-matches.component';
 import { EditPredictionComponent } from './edit-prediction/edit-prediction.component';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     PlayRoutingModule
   ],
   declarations: [

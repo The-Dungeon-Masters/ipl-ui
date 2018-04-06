@@ -10,7 +10,7 @@
     <tbody>
       <tr *ngFor="let match of allMatches">
         <td>
-          <a href="javascript:void(0)" routerLink="/play/predict/{{match.id}}">{{ match.name }}</a>
+          {{ match.name }}
         </td>
         <td>{{ match.startTime | date: 'shortTime' }}</td>
         <td>{{ match.venue }}</td>
