@@ -1,5 +1,5 @@
 <div class="match-overview" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
-  <div class="card" style="width: 100%;" *ngIf="match && matchOverview">
+  <div class="card" *ngIf="match && matchOverview">
     <div class="card-body">
       <h2 class="card-title">{{ match.team1.fullName }} VS {{ match.team2.fullName }}</h2>
       <h4 class="card-subtitle mb-2 text-muted">{{ match.venue }}</h4>
@@ -8,7 +8,7 @@
     </div>
     <div class="card-footer">
       <button class="btn btn.primary" *ngIf="matchOverview.contestwisePredictions.length > 0; else predict_it"  routerLink="/play/edit/{{match.id}}">Edit Pridiction</button>
-      <ng-template #predict_it><button class="btn btn.primary" routerLink="/play/predict/{{match.id}}">Predict</button></ng-template>
+      <ng-template #predict_it><button class="btn btn.primary predict-button" routerLink="/play/predict/{{match.id}}">Predict</button></ng-template>
     </div>
   </div>
 </div>

@@ -4,3 +4,17 @@ body {
     line-height: 1.8;
     color: #193d5d;
 }
+
+.predict-button{
+  background-color:#1A456A;
+  color:#ffffff;
+  font-size: 16px;
+}
+.predict-button:hover {
+  background-color:#2d79bb;
+  color:#ffffff;
+  font-size: 16px;
+}
+.clear{
+  clear: both;
+}

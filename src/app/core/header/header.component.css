@@ -5,11 +5,12 @@ body {
   
   .topnav {
     overflow: hidden;
-    background-color: #193d5d;
+    background: #193d5d;
     top: 0;
     width: 100%;
     position: fixed;
     right: 0;
+    height: 50px;
   }
   
   .topnav a {
@@ -17,13 +18,14 @@ body {
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 16px;
     text-decoration: none;
     font-size: 17px;
   }
   
   .topnav a:hover,.active {
     background-color: #ececec;
+    background: linear-gradient(#ececec, #CACDCD,#ececec);
     color: black!important;
   }
   

@@ -1,7 +1,7 @@
-<div class="row" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+<div class="row contect-container" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
 
     <div *ngIf="match">
-        <div class="col-sm-12" *ngFor="let contest of contests">
+        <div class="col-sm-12 contest-wrapper" *ngFor="let contest of contests">
             <div class="col-sm-6">
                 <div class="form-group">
                     <div class="form-check">
@@ -14,7 +14,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <select class="form-control" id="cont-{{contest.id}}" [disabled]="checkDisable(contest.id)" (change)="teamChanged(contest.id, $event);">
+                    <select class="form-control team-select-box" id="cont-{{contest.id}}" [disabled]="checkDisable(contest.id)" (change)="teamChanged(contest.id, $event);">
                         <option value="{{match.team1.id}}">{{match.team1.name}}</option>
                         <option value="{{match.team2.id}}">{{match.team2.name}}</option>
                     </select>
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="footer">
-        <button class="btn btn-primary" (click)="predictIt()">Predict</button>
+  <button class="btn btn-primary predict-button" (click)="predictIt()">Predict</button>
     </div>
 </div>
 
