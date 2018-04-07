@@ -19,3 +19,9 @@
 .contect-container{
   display: inline-block;
 }
+ul{
+  list-style-type: none;
+}
+ul li{
+  float: left;
+}

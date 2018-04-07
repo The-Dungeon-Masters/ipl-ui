@@ -1,5 +1,4 @@
-<div class="row contect-container" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
-
+<!--<div class="row" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
     <div *ngIf="match">
         <div class="col-sm-12 contest-wrapper" *ngFor="let contest of contests">
             <div class="col-sm-6">
@@ -25,7 +24,40 @@
     <div class="footer">
         <button class="btn btn-primary predict-button" [disabled]="checkedContests.length < 1" (click)="predictIt()">Predict</button>
     </div>
+</div>-->
+
+<div class="row" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+    <div *ngIf="match" style="width: 60%;margin:0 20%;">    
+        <div class="card col-lg-12"  *ngFor="let contest of contests">
+            <div class="card-body">
+                <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <ul>
+                                <li><input class="form-check-input" type="checkbox" (change)="contestChanged(contest.id, $event)">
+                                </li><li><label class="form-check-label">
+                                    {{ contest.type | uppercase }}
+                                </label></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <select class="form-control" id="cont-{{contest.id}}" [disabled]="checkDisable(contest.id)" (change)="teamChanged(contest.id, $event);">
+                            <option value="{{match.team1.id}}">{{match.team1.name}}</option>
+                            <option value="{{match.team2.id}}">{{match.team2.name}}</option>
+                        </select>
+                    </div>
+                </div>          
+            </div>
+        </div>
+        <div class="card-footer">
+            <button style="margin-top:8px;" class="btn btn.primary predict-button" [disabled]="checkedContests.length < 1" (click)="predictIt()">Predict</button>
+        </div>
+    </div>
 </div>
+      
 
 <ng-template #noAuth>
   <h2>You are not authorized to this screen</h2>

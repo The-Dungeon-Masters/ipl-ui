@@ -23,9 +23,8 @@ body {
     font-size: 17px;
   }
   
-  .topnav a:hover,.active {
-    background-color: #ececec;
-    background: linear-gradient(#ececec, #CACDCD,#ececec);
+  .topnav a:hover,.active{
+    background: linear-gradient(#ffffff, #CACDCD,#ffffff);
     color: black!important;
   }
   
