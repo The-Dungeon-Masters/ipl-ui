@@ -50,7 +50,11 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
   }
 
   public predictIt(): void {
-    console.log(this.teamContestMap);
+    const temp = JSON.stringify({ matchId: +(this.route.snapshot.params.id || 0), contestwisePredictions: this.teamContestMap });
+    this.playService.predict(temp)
+    .subscribe(res => {
+      console.log(res);
+    });
   }
 
   // id: contestId
