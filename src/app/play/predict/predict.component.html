@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="footer">
-        <button class="btn btn-primary" (click)="predictIt()">Predict</button>
+        <button class="btn btn-primary" [disabled]="checkedContests.length < 1" (click)="predictIt()">Predict</button>
     </div>
 </div>
 

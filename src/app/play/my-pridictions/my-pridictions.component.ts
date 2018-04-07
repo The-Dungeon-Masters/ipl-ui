@@ -12,6 +12,8 @@ export class MyPridictionsComponent extends AbstractRedirect implements OnInit {
 
   public match = {};
 
+  public myPredictions = [];
+
   constructor(
     public securityService: SecurityService,
     public router: Router,
@@ -23,14 +25,13 @@ export class MyPridictionsComponent extends AbstractRedirect implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
-    const id = +(this.route.snapshot.params.id || 0);
-    this.getMatch(id);
+    this.getPredictions();
   }
 
-  private getMatch(id): void {
-    this.playService.getMatchById(id)
+  private getPredictions(): void {
+    this.playService.getMyPredictions()
       .subscribe(res => {
-        this.match = res;
+        this.myPredictions = res;
       });
   }
 
