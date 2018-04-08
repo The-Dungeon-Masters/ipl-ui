@@ -76,7 +76,7 @@ export class PlayService {
   }
 
   public getContests(): Observable<any> {
-    const _url = HttpService.BASE_URL + `/contest/getall`;
+    const _url = HttpService.BASE_URL + `/user/getcontests`;
     const observable = this.httpService.get(_url)
       .map((res: Response) => {
         return res.json();
