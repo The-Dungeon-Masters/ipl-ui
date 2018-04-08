@@ -3,38 +3,20 @@
     <tr>
       <th>Match</th>
       <th>Date</th>
+      <th>Contest</th>
       <th>Your prediction</th>
       <th>Winner</th>
       <th>Points</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>
-        <a href="">MI vs CSK</a>
-      </td>
-      <td>2 April 2018</td>
-      <td>MI</td>
-      <td>MI</td>
-      <td>-10</td>
-    </tr>
-    <tr>
-      <td>
-        <a href="">MI vs CSK</a>
-      </td>
-      <td>2 April 2018</td>
-      <td>MI</td>
-      <td>MI</td>
-      <td>-10</td>
-    </tr>
-    <tr>
-      <td>
-        <a href="">MI vs CSK</a>
-      </td>
-      <td>2 April 2018</td>
-      <td>MI</td>
-      <td>MI</td>
-      <td>-10</td>
+    <tr *ngFor="let myPrediction of myPredictions">
+      <td>{{ myPrediction.matchName}}</td>
+      <td>{{ myPrediction.time | date }}</td>
+      <td>{{ myPrediction.contest }}</td>
+      <td>{{ myPrediction.predictedTeam }}</td>
+      <td>{{ myPrediction.winningTeam }}</td>
+      <td>{{ myPrediction.points }}</td>
     </tr>
   </tbody>
 </table>
