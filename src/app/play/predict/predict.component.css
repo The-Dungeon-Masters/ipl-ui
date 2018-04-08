@@ -25,3 +25,9 @@ ul{
 ul li{
   float: left;
 }
+@media screen and (max-width: 320px) {
+  .card{
+    width: 300px;
+    margin-left: -39px;
+  }
+}

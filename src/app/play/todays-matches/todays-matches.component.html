@@ -2,24 +2,17 @@
   <div class="card" *ngFor="let match of todaysMatches">
    <div class="card-body">
       <div class="row">
-        <div class="col-lg-6">
-          <img  alt="" src="assets/images/{{match.team1.name}}.png" />
-        </div>
-        <div class="col-sm-6">
-          <img  alt="" src="assets/images/{{match.team2.name}}.png" />
-        </div>
-      </div>
-      <div class="row">
-      <div class="col-sm-12">VS</div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
+        <div class="col-sm-4">
+          <img  class="image-responsive" alt="" src="assets/images/{{match.team1.name}}.png" />
           <h3 class="card-title">{{ match.team1.name }}</h3>
-         </div>
-        <div class="col-sm-6">
+        </div>
+        <div class="col-sm-4">VS</div>
+        <div class="col-sm-4">
+          <img  class="image-responsive" alt="" src="assets/images/{{match.team2.name}}.png" />
           <h3 class="card-title">{{ match.team2.name }}</h3>
         </div>
       </div>
+     
       <h6 class="card-subtitle mb-2 text-muted">{{ match.startTime | date:'shortTime' }}</h6>
       <p class="card-text">{{ match.venue }}</p>
     </div>
