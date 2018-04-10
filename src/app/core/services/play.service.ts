@@ -114,9 +114,32 @@ export class PlayService {
     return observable;
   }
 
+  public getMatchPredictions(id): Observable<any> {
+    const _url = HttpService.BASE_URL + `/matches/myMatchPrediction/${id}`;
+    const observable = this.httpService.get(_url)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: Error) => {
+        const errors = HttpHelper.createErrorsFromHttpError(error);
+        return Observable.throw(new Errors().add(error));
+      });
+    return observable;
+  }
+
   public predict(obj): Observable<any> {
     const _url = HttpService.BASE_URL + `/matches/predictMatch`;
     const observable = this.httpService.post(_url, obj)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch(this.handleError);
+    return observable;
+  }
+
+  public editPredict(obj): Observable<any> {
+    const _url = HttpService.BASE_URL + `/matches/predictMatch`;
+    const observable = this.httpService.put(_url, obj)
       .map((res: Response) => {
         return res.json();
       })

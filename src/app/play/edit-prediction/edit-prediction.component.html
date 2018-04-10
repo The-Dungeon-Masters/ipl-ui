@@ -1,3 +1,46 @@
-<p>
-  edit-prediction works!
-</p>
+<div class="row" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+  <div *ngIf="match" style="width: 60%;margin:0 20%;">
+    <div class="card col-lg-12" *ngFor="let contest of contests">
+      <div class="card-body">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <div class="form-check">
+              <ul>
+                <li>
+                  <input class="form-check-input" type="checkbox" (change)="contestChanged(contest.id, $event)">
+                </li>
+                <li>
+                  <label class="form-check-label">
+                    {{ contest.type | uppercase }}
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <select class="form-control" id="cont-{{contest.id}}" [disabled]="checkDisable(contest.id)" (change)="teamChanged(contest.id, $event);">
+              <option value="{{match.team1.id}}">{{match.team1.name}}</option>
+              <option value="{{match.team2.id}}">{{match.team2.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p style="color: red;">
+        <span *ngIf="errors.hasError('insufficient_funds')">{{ errors.getError('insufficient_funds').message }}</span>
+      </p>
+      <button style="margin-top:8px;" class="btn btn.primary predict-button" [disabled]="errors.hasErrors()" (click)="edit()">Update</button>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

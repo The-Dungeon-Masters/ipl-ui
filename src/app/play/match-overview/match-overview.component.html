@@ -1,19 +1,38 @@
 <div class="match-overview" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
-  <div class="card" *ngIf="match && matchOverview">
-    <div class="card-body">
-      <h2 class="card-title">{{ match.team1.fullName }} VS {{ match.team2.fullName }}</h2>
-      <h4 class="card-subtitle mb-2 text-muted">{{ match.venue }}</h4>
-      <h5 class="card-subtitle mb-2 text-muted" *ngIf="matchOverview.winner">Winner: {{ matchOverview.winner }}</h5>
-      <p class="card-text">{{ match.startTime | date: 'fullDate' }}</p>
+  <ng-container *ngIf="match && matchOverview">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">{{ match.team1.fullName }} VS {{ match.team2.fullName }}</h2>
+        <h4 class="card-subtitle mb-2 text-muted">{{ match.venue }}</h4>
+        <h5 class="card-subtitle mb-2 text-muted" *ngIf="matchOverview.winner">Winner: {{ matchOverview.winner }}</h5>
+        <p class="card-text">{{ match.startTime | date: 'fullDate' }}</p>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn.primary" *ngIf="matchOverview.contestwisePredictions.length > 0; else predict_it" routerLink="/play/edit/{{match.id}}">Edit Pridiction</button>
+        <ng-template #predict_it>
+          <button class="btn btn.primary predict-button" routerLink="/play/predict/{{match.id}}">Predict</button>
+        </ng-template>
+      </div>
     </div>
-    <div class="card-footer">
-      <p style="color: red;" *ngIf="matchOverview.contestwisePredictions.length > 0">
-        You have already predicted for this match
-      </p>
-      <!-- <button class="btn btn.primary" *ngIf="matchOverview.contestwisePredictions.length > 0; else predict_it"  routerLink="/play/edit/{{match.id}}">Edit Pridiction</button> -->
-      <button class="btn btn.primary predict-button" [disabled]="matchOverview.contestwisePredictions.length > 0" routerLink="/play/predict/{{match.id}}">Predict</button>
-    </div>
-  </div>
+    <table class="table overview-table">
+      <thead>
+        <tr>
+          <th>Contest Type</th>
+          <th>{{ match.team1.fullName }}</th>
+          <th>{{ match.team2.fullName }}</th>
+          <th>Winning Points(/person)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let overview of matchOverview.contestwisePredictions">
+          <td>{{ overview.contestName | uppercase }}</td>
+          <td>{{ overview.team1Users }}</td>
+          <td>{{ overview.team2Users }}</td>
+          <td>{{ overview.winningPoints }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
 </div>
 
 

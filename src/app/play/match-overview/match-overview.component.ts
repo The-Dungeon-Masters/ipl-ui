@@ -39,9 +39,6 @@ export class MatchOverviewComponent extends AbstractRedirect implements OnInit {
   public getMatchOverview(id) {
     this.playService.getMatchOverview(id).subscribe(match => {
       this.matchOverview = match;
-      if (match.contestwisePredictions.length > 0) {
-        this.router.navigate(['/play/edit/' + id ]);
-      }
     });
   }
 
