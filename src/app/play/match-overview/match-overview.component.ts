@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class MatchOverviewComponent extends AbstractRedirect implements OnInit {
 
   public match;
+  public id;
   public matchOverview;
 
   constructor(
@@ -26,6 +27,7 @@ export class MatchOverviewComponent extends AbstractRedirect implements OnInit {
   ngOnInit() {
     super.ngOnInit();
     const id = +(this.route.snapshot.params.id || 0);
+    this.id = id;
     this.getMatchOverview(id);
     this.getMatchDetail(id);
   }

@@ -11,4 +11,14 @@ export class AbstractRedirect implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+
+  public isMatchStarted(time, id): boolean {
+    const now = new Date();
+    const d = new Date(time);
+    if (now.getTime() > d.getTime()) {
+      this.router.navigate(['/play/match-overview/' + id]);
+      return true;
+    }
+    return false;
+  }
 }
