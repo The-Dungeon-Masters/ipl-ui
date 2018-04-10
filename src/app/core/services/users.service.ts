@@ -23,4 +23,30 @@ export class UsersService {
     return observable;
   }
 
+
+  public changePassword(data): Observable<any> {
+    const url: string = HttpHelper.BASE_URL + '/user/changepassword';
+    const credentials: string = JSON.stringify({ user: data });
+    const observable = this.httpService.post(url, credentials)
+      .map((res: any) => {
+        console.log(res);
+      }).catch(
+        HttpHelper.handleError
+      );
+    return observable;
+  }
+  
+  public loggedInUser(): Observable<any> {
+    const _url = HttpHelper.BASE_URL + '/user/getloggedinuser';
+    const observable = this.httpService.get(_url)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: Error) => {
+        const errors = HttpHelper.createErrorsFromHttpError(error);
+        return Observable.throw(new Errors().add(error));
+      });
+    return observable;
+  }
+
 }

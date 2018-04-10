@@ -18,6 +18,7 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
   public prediction;
   public checkedContests = [];
   public teamContestMap = [];
+  public matchOverview;
 
   constructor(
     public securityService: SecurityService,
@@ -33,6 +34,7 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
     const id = +(this.route.snapshot.params.id || 0);
     this.getMatch(id);
     this.getContests();
+    this.getMatchOverview(id);
   }
 
   private getMatch(id): void {
@@ -54,6 +56,7 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
     this.playService.predict(temp)
     .subscribe(res => {
       console.log(res);
+      this.router.navigate(['/play/my-predictions']);
     });
   }
 
@@ -83,6 +86,12 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
       return false;
     }
     return true;
+  }
+
+  public getMatchOverview(id) {
+    this.playService.getMatchOverview(id).subscribe(match => {
+      this.matchOverview = match;
+    });
   }
 
 }

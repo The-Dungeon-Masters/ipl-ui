@@ -22,11 +22,11 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getContests();
+    this.getAllContests();
   }
 
-  public getContests(): void {
-    this.playService.getContests()
+  public getAllContests(): void {
+    this.playService.getAllContests()
       .subscribe(res => {
         this.contests = res;
       });

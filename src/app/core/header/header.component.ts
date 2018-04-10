@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SecurityService } from '../security.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,12 @@ import { SecurityService } from '../security.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private router: Router ) { }
+  public userData: any;
+
+  constructor( private router: Router, public userService: UsersService ) { }
 
   ngOnInit() {
+    this.getLoggedInUser();
   }
 
   myFunction() {
@@ -27,6 +31,13 @@ export class HeaderComponent implements OnInit {
   private logout() {
     SecurityService.removeSecurityToken();
     this.router.navigate(['/login']);
+  }
+
+  public getLoggedInUser(): void {
+    this.userService.loggedInUser()
+      .subscribe(res => {
+        this.userData = res.user;
+      });
   }
 
 }

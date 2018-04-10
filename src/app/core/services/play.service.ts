@@ -88,6 +88,19 @@ export class PlayService {
     return observable;
   }
 
+  public getAllContests(): Observable<any> {
+    const _url = HttpService.BASE_URL + `/contest/getall`;
+    const observable = this.httpService.get(_url)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: Error) => {
+        const errors = HttpHelper.createErrorsFromHttpError(error);
+        return Observable.throw(new Errors().add(error));
+      });
+    return observable;
+  }
+
   public getMyPredictions(): Observable<any> {
     const _url = HttpService.BASE_URL + `/matches/myPredictions`;
     const observable = this.httpService.get(_url)
