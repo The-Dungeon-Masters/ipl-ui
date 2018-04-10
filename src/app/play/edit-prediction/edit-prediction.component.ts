@@ -44,6 +44,20 @@ export class EditPredictionComponent extends AbstractRedirect implements OnInit 
       });
   }
 
+  private isChecked(id): boolean {
+    if (_.find(this.teamContestMap, {contestId: id})) {
+      return true;
+    }
+    return false;
+  }
+
+  public isItemSelected(team, contest): boolean {
+    if (_.find(this.teamContestMap, {contestId: contest, teamId: team})) {
+      return true;
+    }
+    return false;
+  }
+
   public edit(): void {
     const temp = JSON.stringify({ matchId: +(this.route.snapshot.params.id || 0), contestPredictions: this.teamContestMap });
     this.playService.editPredict(temp)
