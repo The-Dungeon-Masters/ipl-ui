@@ -26,8 +26,8 @@ export class UsersService {
 
   public changePassword(data): Observable<any> {
     const url: string = HttpHelper.BASE_URL + '/user/changepassword';
-    const credentials: string = JSON.stringify({ user: data });
-    const observable = this.httpService.post(url, credentials)
+    const credentials: string = JSON.stringify({ currentPassword: data.currentPassword, newPassword: data.newPassword });
+    const observable = this.httpService.put(url, credentials)
       .map((res: any) => {
         console.log(res);
       }).catch(

@@ -120,10 +120,17 @@ export class PlayService {
       .map((res: Response) => {
         return res.json();
       })
-      .catch((error: Error) => {
-        const errors = HttpHelper.createErrorsFromHttpError(error);
-        return Observable.throw(new Errors().add(error));
-      });
+      .catch(this.handleError);
     return observable;
+  }
+
+  private handleError (res: Response | any) {
+    const errors = new Errors();
+    const error = res.json() || '';
+    const err = error.errors || JSON.stringify(error);
+    if (error.status  === 'FORBIDDEN') {
+      errors.add(Errors.createError('insufficient_funds', 'Insufficient points to predict'));
+    }
+    return Observable.throw(errors);
   }
 }

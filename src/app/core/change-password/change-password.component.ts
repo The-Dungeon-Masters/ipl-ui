@@ -33,8 +33,9 @@ export class ChangePasswordComponent extends AbstractRedirect implements OnInit 
   public changePassword(): void {
     this.userService.changePassword(this.password)
       .subscribe(res => {
-        debugger;
-      });
+        SecurityService.removeSecurityToken();
+        this.router.navigate(['/login']);
+      }, error => this.errors = error);
   }
 
 }

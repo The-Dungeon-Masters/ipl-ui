@@ -3,6 +3,7 @@ import { PlayService } from '../../core/services/play.service';
 import { SecurityService } from '../../core/security.service';
 import { AbstractRedirect } from '../../core/abstract-redirect';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Errors } from '../../core/errors';
 import * as _ from 'lodash';
 declare var jquery: any;
 declare var $: any;
@@ -20,6 +21,7 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
   public teamContestMap = [];
   public matchOverview;
 
+  public errors = new Errors();
   constructor(
     public securityService: SecurityService,
     public router: Router,
@@ -55,9 +57,8 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
     const temp = JSON.stringify({ matchId: +(this.route.snapshot.params.id || 0), contestPredictions: this.teamContestMap });
     this.playService.predict(temp)
     .subscribe(res => {
-      console.log(res);
       this.router.navigate(['/play/my-predictions']);
-    });
+    }, errors => this.errors = errors);
   }
 
   // id: contestId
@@ -91,6 +92,9 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
   public getMatchOverview(id) {
     this.playService.getMatchOverview(id).subscribe(match => {
       this.matchOverview = match;
+      if (match.contestwisePredictions.length > 0) {
+        this.router.navigate(['/play/edit/' + id ]);
+      }
     });
   }
 

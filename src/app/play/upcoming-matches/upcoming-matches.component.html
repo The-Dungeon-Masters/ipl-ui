@@ -10,7 +10,7 @@
     <tbody>
       <tr *ngFor="let match of upComing">
         <td>
-          <a href="javascript:void(0)">{{ match.name }}</a>
+          <a href="javascript:void(0)" routerLink="/play/predict/{{match.id}}">{{ match.name }}</a>
         </td>
         <td>{{ match.startTime | date: 'shortTime' }}</td>
         <td>{{ match.venue }}</td>

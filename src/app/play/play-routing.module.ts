@@ -16,11 +16,11 @@ import { EditPredictionComponent } from './edit-prediction/edit-prediction.compo
     { path: '', redirectTo: 'todays-matches', pathMatch: 'full'},
     { path: 'todays-matches', component: TodaysMatchesComponent },
     { path: 'predict/:id', component: PredictComponent },
-    { path: 'my-pridictions', component: MyPridictionsComponent },
+    { path: 'my-predictions', component: MyPridictionsComponent },
     { path: 'match-overview/:id', component: MatchOverviewComponent },
     { path: 'all-matches', component: AllMatchesComponent  },
     { path: 'upcoming', component: UpcomingMatchesComponent  },
-    { path: 'edit:/id', component: EditPredictionComponent  }
+    { path: 'edit/:id', component: EditPredictionComponent  }
   ])],
   exports: [RouterModule]
 })
