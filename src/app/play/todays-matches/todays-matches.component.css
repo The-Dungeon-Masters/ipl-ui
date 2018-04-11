@@ -9,11 +9,28 @@
     font: bold;
 }
 
-@media screen and (max-width: 600px) {
     .todays-matches .card {
         margin: 0px;
         height: 100%;
         width: 100%;
+    }
+
+@media screen and (max-width: 480px) {
+    .todays-matches .card {
+        margin: 0 0 0 -40%;
+        height: 100%;
+        width: 180%;
+        margin-bottom: 10%;
+        top: 50px;
+    }
+    img{
+        max-width: 20%;
+    }
+    p{
+        font-size: 14px;
+    }
+    .predict-button{
+        font-size: 12px;
     }
 }
 
