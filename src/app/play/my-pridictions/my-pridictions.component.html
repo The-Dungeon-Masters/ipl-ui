@@ -12,7 +12,7 @@
   <tbody>
     <tr *ngFor="let myPrediction of myPredictions">
       <td>{{ myPrediction.matchName}}</td>
-      <td>{{ myPrediction.time | date: 'dd-mm-yyyy h:mm' }}</td>
+      <td>{{ myPrediction.time | date: 'dd-MM-yyyy h:mm' }}</td>
       <td>{{ myPrediction.contest }}</td>
       <td>{{ myPrediction.predictedTeam }}</td>
       <td>{{ myPrediction.winningTeam }}</td>
