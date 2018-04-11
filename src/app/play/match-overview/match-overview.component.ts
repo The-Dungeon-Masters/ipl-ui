@@ -14,10 +14,11 @@ export class MatchOverviewComponent extends AbstractRedirect implements OnInit {
   public match;
   public id;
   public matchOverview;
+  public predictions;
 
   constructor(
     public securityService: SecurityService,
-    public router: Router ,
+    public router: Router,
     public playService: PlayService,
     private route: ActivatedRoute
   ) {
@@ -30,6 +31,7 @@ export class MatchOverviewComponent extends AbstractRedirect implements OnInit {
     this.id = id;
     this.getMatchOverview(id);
     this.getMatchDetail(id);
+    this.getMatchPredictions(id);
   }
 
   public getMatchDetail(id) {
@@ -37,6 +39,13 @@ export class MatchOverviewComponent extends AbstractRedirect implements OnInit {
       this.match = match;
     });
   }
+
+  public getMatchPredictions(id): void {
+    this.playService.getMatchPredictions(id).subscribe(prediction => {
+      this.predictions = prediction;
+    });
+  }
+
 
   public getMatchOverview(id) {
     this.playService.getMatchOverview(id).subscribe(match => {

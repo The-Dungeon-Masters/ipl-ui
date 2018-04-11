@@ -28,7 +28,7 @@
             <p style="color: red;">
                 <span *ngIf="errors.hasError('insufficient_funds')">{{ errors.getError('insufficient_funds').message }}</span>
             </p>
-            <button style="margin-top:8px;" class="btn btn.primary predict-button" [disabled]="errors.hasErrors()" (click)="predictIt()">Predict</button>
+            <button style="margin-top:8px;" class="btn btn.primary predict-button" [disabled]="checkedContests.length <= 0 || errors.hasErrors()" (click)="predictIt()">Predict</button>
         </div>
     </div>
 </div>

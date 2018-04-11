@@ -40,7 +40,9 @@ export class EditPredictionComponent extends AbstractRedirect implements OnInit 
     this.playService.getMatchById(id)
       .subscribe(res => {
         this.match = res;
-        this.isMatchStarted(res.startTime, id);
+        if (this.isMatchStarted(res.startTime, id)) {
+          this.router.navigate(['/play/match-overview/' + id]);
+        }
       });
   }
 

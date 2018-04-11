@@ -43,7 +43,9 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
     this.playService.getMatchById(id)
       .subscribe(res => {
         this.match = res;
-        this.isMatchStarted(res.startTime, id);
+        if (this.isMatchStarted(res.startTime, id)) {
+          this.router.navigate(['/play/match-overview/' + id]);
+        }
       });
   }
 
@@ -57,9 +59,9 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
   public predictIt(): void {
     const temp = JSON.stringify({ matchId: +(this.route.snapshot.params.id || 0), contestPredictions: this.teamContestMap });
     this.playService.predict(temp)
-    .subscribe(res => {
-      this.router.navigate(['/play/my-predictions']);
-    }, errors => this.errors = errors);
+      .subscribe(res => {
+        this.router.navigate(['/play/my-predictions']);
+      }, errors => this.errors = errors);
   }
 
   // id: contestId
@@ -74,9 +76,9 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
   public contestChanged(id, event) {
     if (event.target.checked) {
       this.checkedContests.push(id);
-      this.teamContestMap.push({'contestId': id, 'teamId': this.match.team1.id});
+      this.teamContestMap.push({ 'contestId': id, 'teamId': this.match.team1.id });
     } else {
-        $('#cont-' + id).prop('selectedIndex', 0);
+      $('#cont-' + id).prop('selectedIndex', 0);
       _.pull(this.checkedContests, id);
       const index = _.indexOf(this.teamContestMap, _.find(this.teamContestMap, { contestId: id }));
       this.teamContestMap.splice(index, 1);
@@ -84,7 +86,7 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
   }
 
   public checkDisable(id): boolean {
-    if ((_.indexOf(this.checkedContests, id)) !== -1 ) {
+    if ((_.indexOf(this.checkedContests, id)) !== -1) {
       return false;
     }
     return true;
@@ -94,7 +96,7 @@ export class PredictComponent extends AbstractRedirect implements OnInit {
     this.playService.getMatchOverview(id).subscribe(match => {
       this.matchOverview = match;
       if (match.contestwisePredictions.length > 0) {
-        this.router.navigate(['/play/edit/' + id ]);
+        this.router.navigate(['/play/edit/' + id]);
       }
     });
   }

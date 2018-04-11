@@ -16,7 +16,6 @@ export class AbstractRedirect implements OnInit {
     const now = new Date();
     const d = new Date(time);
     if (now.getTime() > d.getTime()) {
-      this.router.navigate(['/play/match-overview/' + id]);
       return true;
     }
     return false;
