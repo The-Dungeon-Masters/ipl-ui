@@ -9,6 +9,7 @@ import { AllMatchesComponent } from './all-matches/all-matches.component';
 import { FormsModule } from '@angular/forms';
 import { UpcomingMatchesComponent } from './upcoming-matches/upcoming-matches.component';
 import { EditPredictionComponent } from './edit-prediction/edit-prediction.component';
+import { RechargeHistoryComponent } from './recharge-history/recharge-history.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +23,7 @@ import { EditPredictionComponent } from './edit-prediction/edit-prediction.compo
     MatchOverviewComponent,
     AllMatchesComponent,
     UpcomingMatchesComponent,
-    EditPredictionComponent]
+    EditPredictionComponent,
+    RechargeHistoryComponent]
 })
 export class PlayModule { }

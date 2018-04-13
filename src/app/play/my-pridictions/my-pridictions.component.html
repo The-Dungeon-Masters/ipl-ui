@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let myPrediction of myPredictions">
-      <td>{{ myPrediction.matchName}}</td>
+      <td><a href="javascript:void(0);" routerLink="/play/match-overview/{{myPrediction.id}}"> {{ myPrediction.matchName}}</a></td>
       <td>{{ myPrediction.time | date: 'dd-MM-yyyy h:mm' }}</td>
       <td>{{ myPrediction.contest }}</td>
       <td>{{ myPrediction.predictedTeam }}</td>

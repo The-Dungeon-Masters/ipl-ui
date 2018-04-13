@@ -10,6 +10,41 @@ export class UsersService {
 
   constructor(private httpService: HttpService) { }
 
+  public getAllUsers(): Observable<any> {
+    const url: string = HttpHelper.BASE_URL + '/user/getall';
+    const observable = this.httpService.get(url)
+      .map((res: any) => {
+        return res.json();
+      }).catch(
+        HttpHelper.handleError
+      );
+    return observable;
+  }
+
+
+  public recharge(data): Observable<any> {
+    const url: string = HttpHelper.BASE_URL + '/user/recharge';
+    const credentials: string = JSON.stringify({ userId: data.userId, rechargePoints: data.rechargePoints, 
+        comment: data.comment  });
+    const observable = this.httpService.post(url, credentials)
+      .map((res: any) => {
+        console.log(res);
+      }).catch(
+        HttpHelper.handleError
+      );
+    return observable;
+  }
+
+  public getRecharges(): Observable<any> {
+    const url: string = HttpHelper.BASE_URL + '/user/getrechargehistory';
+    const observable = this.httpService.get(url)
+      .map((res: any) => {
+        return res.json();
+      }).catch(
+        HttpHelper.handleError
+      );
+    return observable;
+  }
 
   public addUser(userData, cont): Observable<any> {
     const url: string = HttpHelper.BASE_URL + '/user/adduser';

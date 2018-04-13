@@ -1,0 +1,23 @@
+<div class="recharge-form" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+  <h2 class="text-center">Recharge</h2>
+  <div class="form-group">
+    <select class="form-control" *ngIf="users" [(ngModel)]="recharge.userId">
+      <option *ngFor="let user of users" value="{{user.user.userId}}">{{user.user.userName}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Points"  [(ngModel)]="recharge.rechargePoints">
+  </div>
+  <div class="form-group">
+    <textarea cols="30" rows="10" class="form-control" placeholder="Comment" [(ngModel)]="recharge.comment"></textarea>
+  </div>
+  <div class="form-group">
+    <button (click)="rechargePts()" class="btn btn-primary btn-block">Recharge</button>
+  </div>
+</div>
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

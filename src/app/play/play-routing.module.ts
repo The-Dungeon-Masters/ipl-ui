@@ -8,6 +8,7 @@ import { MatchOverviewComponent } from './match-overview/match-overview.componen
 import { AllMatchesComponent } from './all-matches/all-matches.component';
 import { UpcomingMatchesComponent } from './upcoming-matches/upcoming-matches.component';
 import { EditPredictionComponent } from './edit-prediction/edit-prediction.component';
+import { RechargeHistoryComponent } from './recharge-history/recharge-history.component';
 /**
  * Provides routing configuration for the Play module
  */
@@ -20,7 +21,8 @@ import { EditPredictionComponent } from './edit-prediction/edit-prediction.compo
     { path: 'match-overview/:id', component: MatchOverviewComponent },
     { path: 'all-matches', component: AllMatchesComponent  },
     { path: 'upcoming', component: UpcomingMatchesComponent  },
-    { path: 'edit/:id', component: EditPredictionComponent  }
+    { path: 'edit/:id', component: EditPredictionComponent  },
+    { path: 'recharge-history', component: RechargeHistoryComponent  }
   ])],
   exports: [RouterModule]
 })

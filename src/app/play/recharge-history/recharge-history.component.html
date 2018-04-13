@@ -1,0 +1,24 @@
+<div class="all-matches" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+  <table class="table all-matches-table">
+    <thead>
+      <tr>
+        <th>Points</th>
+        <th>Date</th>
+        <th>comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recharge of recharges">
+        <td>{{ recharge.rechargePoints}}</td>
+        <td>{{ recharge.rechargeTime | date: 'dd-MM-yyyy h:mm' }}</td>
+        <td>{{ recharge.comment }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>
