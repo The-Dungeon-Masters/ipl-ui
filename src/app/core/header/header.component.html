@@ -4,8 +4,8 @@
   <a href="javascript:void(0);" routerLink="play/my-predictions" [routerLinkActive]="['active']">My Predictions</a>
   <a href="javascript:void(0);" routerLink="play/all-matches" [routerLinkActive]="['active']">IPL Matches</a>
   <a href="javascript:void(0);" routerLink="play/recharge-history" [routerLinkActive]="['active']" >Recharge History</a>
-  <a href="javascript:void(0);" routerLink="change-password" [routerLinkActive]="['active']">Change Password</a>
   <a href="javascript:void(0);" (click)="logout();" [routerLinkActive]="['active']">Logout</a>
+  <a href="javascript:void(0);" routerLink="change-password" [routerLinkActive]="['active']">Change Password</a>
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" (click)="myFunction()" [routerLinkActive]="['active']">&#9776;</a>
   <div class="pull-right your-points" *ngIf="userData">Points: {{userData.points}}</div>
 </div>
