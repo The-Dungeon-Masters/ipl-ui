@@ -12,6 +12,7 @@ import { UsersService } from './services/users.service';
 import { SecurityService } from './security.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { RechargeComponent } from './recharge/recharge.component';
+import { UpdateResultComponent } from './update-result/update-result.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +24,14 @@ import { RechargeComponent } from './recharge/recharge.component';
     FooterComponent,
     HeaderComponent,
   ],
-  declarations: [HeaderComponent, FooterComponent, UserLoginComponent, RegisterComponent, ChangePasswordComponent, RechargeComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    UserLoginComponent,
+    RegisterComponent,
+    ChangePasswordComponent,
+    RechargeComponent,
+    UpdateResultComponent],
   providers: [
     PlayService,
     UsersService,

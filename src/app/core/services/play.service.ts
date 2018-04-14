@@ -127,6 +127,20 @@ export class PlayService {
     return observable;
   }
 
+  public updateResult(data): Observable<any> {
+    const _url = HttpService.BASE_URL + `/matches/updateMatch`;
+    const credentials: string = JSON.stringify({ winningTeamId: data.winningTeamId, matchId: data.matchId });
+    const observable = this.httpService.put(_url, credentials)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((error: Error) => {
+        const errors = HttpHelper.createErrorsFromHttpError(error);
+        return Observable.throw(new Errors().add(error));
+      });
+    return observable;
+  }
+
   public predict(obj): Observable<any> {
     const _url = HttpService.BASE_URL + `/matches/predictMatch`;
     const observable = this.httpService.post(_url, obj)
