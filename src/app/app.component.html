@@ -1,22 +1,14 @@
 <html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <body>
-
-<app-header *ngIf="securityService.currentUser.isAuthenticated"></app-header>        
-<div class="app-class">
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="col-sm-12">
-                
+        <app-header *ngIf="securityService.currentUser.isAuthenticated"></app-header>        
+        <div class="container app-class">
+            <div class="container-fluid text-center">
                 <div class="main">
                     <router-outlet></router-outlet>
                 </div>
-                
             </div>
         </div>
-    </div>
-</div>
-<app-footer *ngIf="securityService.currentUser.isAuthenticated"></app-footer>
-
-</body>
+        <app-footer *ngIf="securityService.currentUser.isAuthenticated"></app-footer>
+    </body>
 </html>

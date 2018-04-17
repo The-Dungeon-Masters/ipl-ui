@@ -1,9 +1,11 @@
 .app-class{
-    padding: 50px;
-    margin: 50px;
+    margin: 20px auto;
 }
-@media screen and (max-width: 320px) {
-    .col-sm-12{
-        margin: -66%;
+.main {
+    
+}
+@media screen and (max-width: 480px) {
+    .main {
+        overflow:auto;
     }
 }

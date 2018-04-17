@@ -1,4 +1,5 @@
 <div class="topnav" id="myTopnav">
+    
   <a href="javascript:void(0);" routerLink="play/todays-matches" [routerLinkActive]="['active']">Todays Match</a>
   <a href="javascript:void(0);" routerLink="play/upcoming" [routerLinkActive]="['active']">Upcoming Match</a>
   <a href="javascript:void(0);" routerLink="play/my-predictions" [routerLinkActive]="['active']">My Predictions</a>
@@ -6,6 +7,8 @@
   <a href="javascript:void(0);" routerLink="play/recharge-history" [routerLinkActive]="['active']" >Recharge History</a>
   <a href="javascript:void(0);" (click)="logout();" [routerLinkActive]="['active']">Logout</a>
   <a href="javascript:void(0);" routerLink="change-password" [routerLinkActive]="['active']">Change Password</a>
+  
   <a href="javascript:void(0);" style="font-size:15px;" class="icon" (click)="myFunction()" [routerLinkActive]="['active']">&#9776;</a>
-  <div class="pull-right your-points" *ngIf="userData">Points: {{userData.points}}</div>
+  <span class="pull-right your-points" *ngIf="userData">Points: {{userData.points}}</span>
+  <div style="clear:both;"></div>
 </div>

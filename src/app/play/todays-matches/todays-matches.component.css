@@ -1,30 +1,17 @@
 .todays-matches .card {
     display: inline-block;
-    margin: 5px 20px;
-    height: 100%;
-    width: 50%;
+    margin: 0;
+    width: 100%;
 }
 
 .todays-matches .card a{
     font: bold;
 }
-
-    .todays-matches .card {
-        margin: 0px;
-        height: 100%;
-        width: 100%;
-    }
-
 @media screen and (max-width: 480px) {
     .todays-matches .card {
-        margin: 0 0 0 -40%;
-        height: 100%;
-        width: 180%;
-        margin-bottom: 10%;
-        top: 50px;
     }
     img{
-        max-width: 20%;
+        max-width: 96px;
     }
     p{
         font-size: 14px;
@@ -36,13 +23,9 @@
 
 @media screen and (max-width: 320px) {
     .todays-matches .card {
-        margin: 0 0 0 -15%;
-        height: 100%;
-        width: 300%;
-        margin-bottom: 10%;
     }
     img{
-        max-width: 20%;
+        max-width: 96px;
     }
     p{
         font-size: 14px;

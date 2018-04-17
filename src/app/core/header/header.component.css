@@ -6,11 +6,7 @@ body {
   .topnav {
     overflow: hidden;
     background: #193d5d;
-    top: 0;
     width: 100%;
-    position: fixed;
-    right: 0;
-    height: 50px;
   }
   
   .topnav a {
@@ -38,37 +34,26 @@ body {
       float: right;
       display: block;
     }
-  }
-  
-  @media screen and (max-width: 480px) {
     .topnavresponsive {
       background: #193d5d;
-      top: 0;
       width: 100%;
-      position: absolute;
-      right: 0;
-      z-index: 9999;
     }
     .topnavresponsive a {
       float: none;
       display: block;
-      text-align: center;
-      color: white;
+      text-align: left;
+      color: #ffffff;
       text-decoration: none;
+      border-bottom: 1px solid #808080;
+      padding-left: 10px;
+      padding-bottom: 10px;
     }
-}
-@media screen and (max-width: 320px) {
-  .topnavresponsive {
-    background: #193d5d;
-    top: 0;
-    width: 117%;
-    position: absolute;
-    right: -32px;
-    z-index: 9999;
   }
+@media screen and (max-width: 320px) {
+
 }
 .your-points{
   color: #fff;
-  margin-right: 20%;
+  margin-right: 20px;
   margin-top: 10px;
 }
