@@ -1,3 +1,19 @@
+<div class="result-update-form"  *ngIf="userDetail.userType === 'Admin'">
+  <h2 class="text-center">Update Match result</h2>
+  <div class="form-group">
+      <select class="form-control" [(ngModel)]="result.winningTeamId">
+        <option value="{{match.team1.id}}">{{match.team1.fullName}}</option>
+        <option value="{{match.team2.id}}">{{match.team2.fullName}}</option>
+      </select>
+  </div>
+  <div class="form-group">
+      <input type="text" class="form-control" placeholder="Match Id" readonly [(ngModel)]="result.matchId">
+  </div>
+  <div class="form-group">
+      <button (click)="update()" class="btn btn-primary btn-block">Update</button>
+  </div>
+</div>
+
 <div class="match-overview" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
   <ng-container *ngIf="match && matchOverview && predictions">
     <div class="card">

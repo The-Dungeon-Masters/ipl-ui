@@ -12,7 +12,6 @@ import { UsersService } from './services/users.service';
 import { SecurityService } from './security.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { RechargeComponent } from './recharge/recharge.component';
-import { UpdateResultComponent } from './update-result/update-result.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,8 +29,7 @@ import { UpdateResultComponent } from './update-result/update-result.component';
     UserLoginComponent,
     RegisterComponent,
     ChangePasswordComponent,
-    RechargeComponent,
-    UpdateResultComponent],
+    RechargeComponent],
   providers: [
     PlayService,
     UsersService,
