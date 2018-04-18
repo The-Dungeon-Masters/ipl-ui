@@ -20,7 +20,7 @@
       <div class="card-body">
         <h2 class="card-title">{{ match.team1.fullName }} VS {{ match.team2.fullName }}</h2>
         <h4 class="card-subtitle mb-2 text-muted">{{ match.venue }}</h4>
-        <h5 class="card-subtitle mb-2 text-muted" *ngIf="matchOverview.winner">Winner: {{ matchOverview.winner }}</h5>
+        <h2 class="winner" *ngIf="matchOverview.winner">Winner: {{ matchOverview.winner }}</h2>
         <p class="card-text">{{ match.startTime | date: 'fullDate' }}</p>
       </div>
       <div class="card-footer" *ngIf="!isMatchStarted(match.startTime, id)">
