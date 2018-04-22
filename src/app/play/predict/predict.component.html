@@ -14,7 +14,7 @@
                             </div>
                         </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6 divDisable">
                     <div class="form-group">
                         <select class="form-control" id="cont-{{contest.id}}" [disabled]="checkDisable(contest.id)" (change)="teamChanged(contest.id, $event);">
                             <option value="{{match.team1.id}}">{{match.team1.name}}</option>
