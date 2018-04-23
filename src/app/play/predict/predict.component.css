@@ -12,6 +12,7 @@
   color : #09556A;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+  float: left;
 }
 .contest-wrapper{
   margin: 5px 0;
@@ -26,11 +27,5 @@ ul li{
   float: left;
 }
 @media screen and (max-width: 320px) {
-  .card{
-    width: 300px;
-    margin-left: -39px;
-  }
-  .divDisable{
-    margin-top: 10%;
-  }
+  
 }

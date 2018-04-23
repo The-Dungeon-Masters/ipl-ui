@@ -24,7 +24,7 @@
         <p class="card-text">{{ match.startTime | date: 'fullDate' }}</p>
       </div>
       <div class="card-footer" *ngIf="!isMatchStarted(match.startTime, id)">
-        <button class="btn btn.primary predict-button" *ngIf="predictions.contestPredictions.length > 0; else predict_it" routerLink="/play/edit/{{match.id}}">Edit Pridiction</button>
+        <button class="btn btn.primary predict-button" *ngIf="predictions.contestPredictions.length > 0; else predict_it" routerLink="/play/edit/{{match.id}}">Edit Prediction</button>
         <ng-template #predict_it>
           <button class="btn btn.primary predict-button" routerLink="/play/predict/{{match.id}}">Predict</button>
         </ng-template>

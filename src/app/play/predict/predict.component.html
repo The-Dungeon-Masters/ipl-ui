@@ -1,27 +1,27 @@
-<div class="row" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
-    <div *ngIf="match" style="width: 60%;margin:0 20%;">    
-        <div class="card col-lg-12"  *ngFor="let contest of contests">
+<div class="row"  *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+    <div class="col-sm-8 col-sm-offset-2"  *ngIf="match">    
+        <div class="card"  *ngFor="let contest of contests">
             <div class="card-body">
-                <div class="col-sm-6">
+                <div class="row">
+                <div class="col-sm-8">
                         <div class="form-group">
                             <div class="form-check">
-                                <ul>
-                                <li><input class="form-check-input" type="checkbox" (change)="contestChanged(contest.id, $event)">
-                                </li><li><label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" (change)="contestChanged(contest.id, $event)">
+                                <label class="form-check-label">
                                     {{ contest.type | uppercase }}
-                                </label></li>
-                                </ul>
+                                </label>
                             </div>
                         </div>
                 </div>
-                <div class="col-sm-6 divDisable">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <select class="form-control" id="cont-{{contest.id}}" [disabled]="checkDisable(contest.id)" (change)="teamChanged(contest.id, $event);">
                             <option value="{{match.team1.id}}">{{match.team1.name}}</option>
                             <option value="{{match.team2.id}}">{{match.team2.name}}</option>
                         </select>
                     </div>
-                </div>          
+                </div>   
+                </div>       
             </div>
         </div>
         <div class="card-footer">
