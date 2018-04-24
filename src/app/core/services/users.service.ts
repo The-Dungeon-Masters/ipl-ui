@@ -21,6 +21,28 @@ export class UsersService {
     return observable;
   }
 
+  public getUserBoard(): Observable<any> {
+    const url: string = HttpHelper.BASE_URL + '/user/getUserBoard';
+    const observable = this.httpService.get(url)
+      .map((res: any) => {
+        return res.json();
+      }).catch(
+        HttpHelper.handleError
+      );
+    return observable;
+  }
+
+  public topGainers(): Observable<any> {
+    const url: string = HttpHelper.BASE_URL + '/matches/getTopMatchwisePoints';
+    const observable = this.httpService.get(url)
+      .map((res: any) => {
+        return res.json();
+      }).catch(
+        HttpHelper.handleError
+      );
+    return observable;
+  }
+
 
   public recharge(data): Observable<any> {
     const url: string = HttpHelper.BASE_URL + '/user/recharge';

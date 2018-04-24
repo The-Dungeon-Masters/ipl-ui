@@ -19,13 +19,13 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.securityService.currentUser.isAuthenticated) {
-      this.router.navigate(['/play']);
+      this.router.navigate(['/dashboard']);
     }
   }
 
   public login(): void {
     this.securityService.authenticate(this.user).subscribe(user => {
-      this.router.navigate(['/play']);
+      this.router.navigate(['/dashboard']);
     },
     errors =>  {
       this.errors = errors;

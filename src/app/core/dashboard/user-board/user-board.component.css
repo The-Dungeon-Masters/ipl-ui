@@ -1,0 +1,5 @@
+.user-board-table{
+    text-align: left;
+  }
+  .user-board-table tr:nth-child(even) {background: #F7F4F3}
+  .user-board-table tr:nth-child(odd) {background: #FFF}

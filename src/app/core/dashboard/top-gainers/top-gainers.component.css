@@ -1,0 +1,5 @@
+.top-gainers-table{
+    text-align: left;
+  }
+  .top-gainers-table tr:nth-child(even) {background: #F7F4F3}
+  .top-gainers-table tr:nth-child(odd) {background: #FFF}

@@ -1,0 +1,22 @@
+<div class="user-board">
+  <table class="table user-board-table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Win/Lose</th>
+        <th>Total</th>
+        <th>Win/Lose %</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userBoard">
+        <td>
+          <a href="javascript:void(0)" routerLink="/user/{{user.userId}}"> {{ user.userName }} </a>
+        </td>
+        <td>{{ user.netPoints }}</td>
+        <td>{{ user.totalPoints }}</td>
+        <td>{{ ((user.netPoints/user.totalPoints)*100).toFixed(2) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

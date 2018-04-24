@@ -14,7 +14,7 @@ import { RechargeHistoryComponent } from './recharge-history/recharge-history.co
  */
 @NgModule({
   imports: [RouterModule.forChild([
-    { path: '', redirectTo: 'todays-matches', pathMatch: 'full'},
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     { path: 'todays-matches', component: TodaysMatchesComponent },
     { path: 'predict/:id', component: PredictComponent },
     { path: 'my-predictions', component: MyPridictionsComponent },

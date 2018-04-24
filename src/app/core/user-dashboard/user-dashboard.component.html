@@ -1,0 +1,10 @@
+<div class="user-dashboard" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+  user page works
+</div>
+
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

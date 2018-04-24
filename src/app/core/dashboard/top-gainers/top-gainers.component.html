@@ -1,0 +1,20 @@
+<div class="top-gainers">
+  <table class="table top-gainers-table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Match</th>
+        <th>Points Won</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of gainers">
+        <td>
+          <a href="javascript:void(0)" routerLink="/user/{{user.userId}}"> {{ user.userName }} </a>
+        </td>
+        <td>{{ user.matchName }}</td>
+        <td>{{ user.points }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

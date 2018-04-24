@@ -1,0 +1,19 @@
+<div class="dashboard col-sm-12" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+  <div class="row">
+    <div class="col-sm-8">
+        <h2>LeaderBoard</h2>
+        <app-user-board></app-user-board>
+    </div>
+    <div class="col-sm-4">
+        <h2>Top Grossers</h2>
+        <app-top-gainers></app-top-gainers>
+    </div>
+  </div>
+</div>
+
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

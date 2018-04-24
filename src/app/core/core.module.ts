@@ -12,6 +12,10 @@ import { UsersService } from './services/users.service';
 import { SecurityService } from './security.service';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { RechargeComponent } from './recharge/recharge.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TopGainersComponent } from './dashboard/top-gainers/top-gainers.component';
+import { UserBoardComponent } from './dashboard/user-board/user-board.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +33,11 @@ import { RechargeComponent } from './recharge/recharge.component';
     UserLoginComponent,
     RegisterComponent,
     ChangePasswordComponent,
-    RechargeComponent],
+    RechargeComponent,
+    DashboardComponent,
+    TopGainersComponent,
+    UserBoardComponent,
+    UserDashboardComponent],
   providers: [
     PlayService,
     UsersService,
