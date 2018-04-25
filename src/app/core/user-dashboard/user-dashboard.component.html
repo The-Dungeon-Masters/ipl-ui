@@ -1,7 +1,28 @@
-<div class="user-dashboard" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
-  user page works
+<div class="col-sm-12" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+  <h2 *ngIf="userPredictions">{{userPredictions[0].userName | uppercase }}</h2>
+  <table class="table user-dashboard-table">
+    <thead>
+      <tr>
+        <th>Match</th>
+        <th>Match Date</th>
+        <th>Contest</th>
+        <th>Winner</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prediction of userPredictions">
+        <td>
+          <a href="javascript:void(0);" routerLink="/play/match-overview/{{prediction.matchId}}"> {{ prediction.matchName}}</a>
+        </td>
+        <td>{{ prediction.time | date: 'dd-MM-yyyy h:mm' }}</td>
+        <td>{{ prediction.contestName }}</td>
+        <td>{{ prediction.winner }}</td>
+        <td>{{ prediction.points }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
 <ng-template #noAuth>
   <h2>You are not authorized to this screen</h2>
   <h4>please login

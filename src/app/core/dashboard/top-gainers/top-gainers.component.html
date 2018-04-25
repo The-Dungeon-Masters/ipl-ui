@@ -12,7 +12,7 @@
         <td>
           <a href="javascript:void(0)" routerLink="/user/{{user.userId}}"> {{ user.userName }} </a>
         </td>
-        <td>{{ user.matchName }}</td>
+        <td><a href="javascript:void(0)" routerLink="/play/match-overview/{{user.matchId}}"> {{ user.matchName }} </a></td>
         <td>{{ user.points }}</td>
       </tr>
     </tbody>

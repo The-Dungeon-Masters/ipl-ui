@@ -32,6 +32,17 @@ export class UsersService {
     return observable;
   }
 
+  public matchWisePoints(userId): Observable<any> {
+    const url: string = HttpHelper.BASE_URL + `/matches/getUsersMatchwisePoints/${userId}`;
+    const observable = this.httpService.get(url)
+      .map((res: any) => {
+        return res.json();
+      }).catch(
+        HttpHelper.handleError
+      );
+    return observable;
+  }
+
   public topGainers(): Observable<any> {
     const url: string = HttpHelper.BASE_URL + '/matches/getTopMatchwisePoints';
     const observable = this.httpService.get(url)
