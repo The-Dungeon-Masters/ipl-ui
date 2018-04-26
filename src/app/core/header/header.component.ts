@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { SecurityService } from '../security.service';
 import { UsersService } from '../services/users.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,10 @@ import { UsersService } from '../services/users.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public isLunch = false;
   public userData: any;
 
-  constructor( private router: Router, public userService: UsersService ) { }
+  constructor(private router: Router, public userService: UsersService) { }
 
   ngOnInit() {
     this.getLoggedInUser();
@@ -37,7 +39,18 @@ export class HeaderComponent implements OnInit {
     this.userService.loggedInUser()
       .subscribe(res => {
         this.userData = res.user;
+        if (res.contests.length > 1 && this.checkLunch(res.contests)) {
+          this.isLunch = true;
+        }
       });
+  }
+
+
+  private checkLunch(contests): boolean {
+    if (_.indexOf(contests, 1) === -1) {
+      return false;
+    }
+    return true;
   }
 
 }

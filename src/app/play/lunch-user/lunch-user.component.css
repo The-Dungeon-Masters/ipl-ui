@@ -1,0 +1,13 @@
+.card {
+    border: 1px solid #cccccc;
+    margin-bottom: 50px;
+}
+.winnings{
+    color: rgb(45, 224, 21);
+}
+
+.user-history-table{
+    text-align: left;
+  }
+  .user-history-table tr:nth-child(even) {background: #F7F4F3}
+  .user-history-table tr:nth-child(odd) {background: #FFF}

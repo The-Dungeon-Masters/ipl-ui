@@ -1,14 +1,38 @@
 <div class="dashboard col-sm-12" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
-  <div class="row">
-    <div class="col-sm-8">
-        <h2>LeaderBoard</h2>
-        <app-user-board></app-user-board>
-    </div>
-    <div class="col-sm-4">
-        <h2>Top Grossers</h2>
-        <app-top-gainers></app-top-gainers>
+  <div class="row" *ngIf="isOnlyLunch; else otherBoards">
+    <div class="col-sm-12">
+      <div class="lunch">
+        <table class="table lunch-table">
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Current Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let lunch of lunchBoard">
+              <td>
+                <a href="javascript:void(0)" routerLink="/play/lunch/user/{{lunch.userId}}"> {{ lunch.userName | uppercase }} </a>
+              </td>
+              <td>{{ lunch.netPoints }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+  <ng-template #otherBoards>
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>LeaderBoard</h2>
+        <app-user-board></app-user-board>
+      </div>
+      <div class="col-sm-4">
+        <h2>Top Grossers</h2>
+        <app-top-gainers></app-top-gainers>
+      </div>
+    </div>
+  </ng-template>
 </div>
 
 <ng-template #noAuth>

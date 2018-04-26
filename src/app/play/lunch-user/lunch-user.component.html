@@ -1,0 +1,40 @@
+<div class="lunch-user" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+  <ng-container *ngIf="lunchUser">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">{{ lunchUser.userName | uppercase }}</h2>
+        <h3 class="card-subtitle mb-2 winnings">Won Matches: {{ lunchUser.winMatchesCount }}</h3>
+        <h3>Missed Matches: {{ lunchUser.matchMissCount }}</h3>
+        <h3>Adjustment: {{ lunchUser.adjustment }}*</h3>
+        <p class="card-text">* You joined late in ipl and missed these matches, when we go to lunch you need to pay the half amount of matches
+          you missed</p>
+      </div>
+    </div>
+    <table class="table user-history-table">
+      <thead>
+        <tr>
+          <th>Match</th>
+          <th>Your Prediction</th>
+          <th>Points Lost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let match of lunchUser.matchDetails">
+          <td>
+            <a href="javascript:void(0)" routerLink="/play/match-overview/{{match.matchId}}"> {{ match.match | uppercase }}</a>
+          </td>
+          <td>{{ match.prediction }}</td>
+          <td>{{ match.points }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>
+
+
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

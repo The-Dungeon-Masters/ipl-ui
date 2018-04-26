@@ -1,0 +1,24 @@
+<div class="lunch" *ngIf="securityService.currentUser.isAuthenticated; else noAuth">
+  <table class="table lunch-table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Current Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lunch of lunchBoard">
+        <td>
+          <a href="javascript:void(0)" routerLink="/play/lunch/user/{{lunch.userId}}"> {{ lunch.userName | uppercase }} </a>
+        </td>
+        <td>{{ lunch.netPoints }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noAuth>
+  <h2>You are not authorized to this screen</h2>
+  <h4>please login
+    <a href="javascript:void()" routerLink="/login">Login</a>
+  </h4>
+</ng-template>

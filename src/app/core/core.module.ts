@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TopGainersComponent } from './dashboard/top-gainers/top-gainers.component';
 import { UserBoardComponent } from './dashboard/user-board/user-board.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { LunchBoardComponent } from '../play/lunch-board/lunch-board.component';
 @NgModule({
   imports: [
     CommonModule,
